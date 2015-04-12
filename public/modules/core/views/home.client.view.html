@@ -7,16 +7,16 @@
 		</div>
 	</div>
 	<div>
-		<h2>Chatroom goes here!.</h2>
-		<p>is this where we put the info?!</p>
-		<p>This sample application tracks users and articles.</p>
+
+		<h2>Welcome, {{ authentication.user.displayName }}!</h2>
+		<p>Chat goes here</p>
 	</div>
 
 	
 <div class="row chat">
 	<ul id="messages"></ul>
     <form action="">
-    <input id="m" autocomplete="off" /><button>Shoot</button>
+    <input id="m" autocomplete="off" /><button>Chat!</button>
     </form>
 
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
