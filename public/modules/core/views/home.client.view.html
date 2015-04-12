@@ -6,8 +6,11 @@
 			</div>
 		</div>
 	</div>
-	<div>
-
+	<div data-ng-hide="authentication.user">
+		<h2>Please Sign in to continue </h2>
+		<p>Chat goes here</p>
+	</div>
+	<div data-ng-show="authentication.user">
 		<h2>Welcome, {{ authentication.user.displayName }}!</h2>
 		<p>Chat goes here</p>
 	</div>
