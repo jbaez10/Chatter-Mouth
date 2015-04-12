@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/meanscoket-dev',
 	app: {
-		title: 'MEANScoket - Development Environment'
+		title: 'Chatter Box 2.0'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
