@@ -6,37 +6,37 @@
 			</div>
 		</div>
 	</div>
-	<div data-ng-hide="authentication.user">
-		<h2>Please Sign in to continue </h2>
-		<p>Chat goes here</p>
+
+	<div class="row welcome" data-ng-hide="authentication.user">
+		<h2>Please Sign In. </h2>
 	</div>
 	<div data-ng-show="authentication.user">
-		<h2>Welcome, {{ authentication.user.displayName }}!</h2>
-		<p>Chat goes here</p>
+		<h2>Welcome back, {{ authentication.user.displayName }}!</h2>
 	</div>
 
 	
-<div class="row chat">
-	<ul id="messages"></ul>
-    <form action="">
-    <input id="m" autocomplete="off" /><button>Chat</button>
-    </form>
+	<div class="row chat">
+		<p>Chat goes here</p>
+		<ul id="messages"></ul>
 
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-  var socket = io();
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-  socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
-  });
-</script>
+	    <form action="">
+	    <input id="m" autocomplete="off" /><button>Chat</button>
+	    </form>
 
-</div>
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script>
+		  var socket = io();
+		  $('form').submit(function(){
+		    socket.emit('chat message', $('#m').val());
+		    $('#m').val('');
+		    return false;
+		  });
+		  socket.on('chat message', function(msg){
+		    $('#messages').append($('<li>').text(msg));
+		  });
+		</script>
+	</div>
 
 
 </section>
