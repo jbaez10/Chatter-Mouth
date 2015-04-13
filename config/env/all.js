@@ -30,7 +30,7 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
 			]
 		},
-		css: [
+		css: [ /* THIS IS WHERE WE CAN ADD OUR OWN CSS FILES */
 			'public/modules/**/css/*.css'
 		],
 		js: [
