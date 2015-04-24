@@ -8,11 +8,11 @@
 	</div>
 
 	<div class="row welcome" data-ng-hide="authentication.user">
-		<h2>Please Sign In. </h2>
+		<h2>Please Sign In to start Chatting! </h2>
 	</div>
 	<div data-ng-show="authentication.user">
 		<h2>Welcome back, {{ authentication.user.displayName }}!</h2>
-	</div>
+	
 
 	
 	<div class="row chat">
@@ -36,6 +36,8 @@
 		    $('#messages').append($('<li>').text(msg));
 		  });
 		</script>
+	</div>
+
 	</div>
 
 
