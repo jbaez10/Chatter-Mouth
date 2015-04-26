@@ -7,15 +7,17 @@
 		</div>
 	</div>
 
-	<div class="row welcome" data-ng-hide="authentication.user">
-		<h2>Please Sign In to start Chatting! </h2>
+	<br><br>
+	<div class="row welcome text-center" data-ng-hide="authentication.user">
+		<h4>Chatter-Mouth is a a real-time chat application that allows users to do exactly one thing: chat! Set up your account and have access to simple chatting with other users. Enjoy. </h4>
+		<h2>Please Sign-In to Start Chatting! </h2>
 	</div>
 	<div data-ng-show="authentication.user">
 		<h2>Welcome back, {{ authentication.user.displayName }}!</h2>
 	
 
 	
-	<div class="row chat">
+	<div class="row chat tex-center">
 		<p>Chat goes here</p>
 		<ul id="messages"></ul>
 
