@@ -66,17 +66,17 @@ describe('Chat CRUD tests', function() {
 						if (chatSaveErr) done(chatSaveErr);
 
 						// Get a list of articles
-						agent.get('/articles')
-							.end(function(articlesGetErr, articlesGetRes) {
+						agent.get('/chat')
+							.end(function(chatGetErr, chatGetRes) {
 								// Handle article save error
-								if (articlesGetErr) done(articlesGetErr);
+								if (chatGetErr) done(chatGetErr);
 
 								// Get articles list
-								var articles = articlesGetRes.body;
+								var chat = chatGetRes.body;
 
 								// Set assertions
-								(articles[0].user._id).should.equal(userId);
-								(articles[0].title).should.match('Article Title');
+								(chat[0].user._id).should.equal(userId);
+								(chat[0].title).should.match('Chat Title');
 
 								// Call the assertion callback
 								done();
@@ -85,19 +85,19 @@ describe('Chat CRUD tests', function() {
 			});
 	});
 
-	it('should not be able to save an article if not logged in', function(done) {
-		agent.post('/articles')
-			.send(article)
+	it('should not be able to save an chat if not logged in', function(done) {
+		agent.post('/chat')
+			.send(chat)
 			.expect(401)
-			.end(function(articleSaveErr, articleSaveRes) {
+			.end(function(chatSaveErr, chatSaveRes) {
 				// Call the assertion callback
-				done(articleSaveErr);
+				done(chatSaveErr);
 			});
 	});
 
-	it('should not be able to save an article if no title is provided', function(done) {
+	it('should not be able to save an chat if no title is provided', function(done) {
 		// Invalidate title field
-		article.title = '';
+		chat.title = '';
 
 		agent.post('/auth/signin')
 			.send(credentials)
@@ -110,20 +110,20 @@ describe('Chat CRUD tests', function() {
 				var userId = user.id;
 
 				// Save a new article
-				agent.post('/articles')
-					.send(article)
+				agent.post('/chat')
+					.send(chat)
 					.expect(400)
-					.end(function(articleSaveErr, articleSaveRes) {
+					.end(function(chatSaveErr, chatSaveRes) {
 						// Set message assertion
-						(articleSaveRes.body.message).should.match('Title cannot be blank');
+						(chatSaveRes.body.message).should.match('Title cannot be blank');
 						
 						// Handle article save error
-						done(articleSaveErr);
+						done(chatSaveErr);
 					});
 			});
 	});
 
-	it('should be able to update an article if signed in', function(done) {
+	it('should be able to update an chatif signed in', function(done) {
 		agent.post('/auth/signin')
 			.send(credentials)
 			.expect(200)
@@ -135,27 +135,27 @@ describe('Chat CRUD tests', function() {
 				var userId = user.id;
 
 				// Save a new article
-				agent.post('/articles')
-					.send(article)
+				agent.post('/chat')
+					.send(chat)
 					.expect(200)
-					.end(function(articleSaveErr, articleSaveRes) {
+					.end(function(chatSaveErr, chatSaveRes) {
 						// Handle article save error
-						if (articleSaveErr) done(articleSaveErr);
+						if (chatSaveErr) done(chatSaveErr);
 
 						// Update article title
-						article.title = 'WHY YOU GOTTA BE SO MEAN?';
+						chat.title = 'WHY YOU GOTTA BE SO MEAN?';
 
 						// Update an existing article
-						agent.put('/articles/' + articleSaveRes.body._id)
-							.send(article)
+						agent.put('/chat/' + chatSaveRes.body._id)
+							.send(chat)
 							.expect(200)
-							.end(function(articleUpdateErr, articleUpdateRes) {
+							.end(function(chatUpdateErr, chatUpdateRes) {
 								// Handle article update error
-								if (articleUpdateErr) done(articleUpdateErr);
+								if (chatUpdateErr) done(chatUpdateErr);
 
 								// Set assertions
-								(articleUpdateRes.body._id).should.equal(articleSaveRes.body._id);
-								(articleUpdateRes.body.title).should.match('WHY YOU GOTTA BE SO MEAN?');
+								(chatUpdateRes.body._id).should.equal(chatSaveRes.body._id);
+								(chatUpdateRes.body.title).should.match('WHY YOU GOTTA BE SO MEAN?');
 
 								// Call the assertion callback
 								done();
@@ -166,12 +166,12 @@ describe('Chat CRUD tests', function() {
 
 	it('should be able to get a list of articles if not signed in', function(done) {
 		// Create new article model instance
-		var articleObj = new Article(article);
+		var chatObj = new Chat(chat);
 
 		// Save the article
-		articleObj.save(function() {
+		chatObj.save(function() {
 			// Request articles
-			request(app).get('/articles')
+			request(app).get('/chat')
 				.end(function(req, res) {
 					// Set assertion
 					res.body.should.be.an.Array.with.lengthOf(1);
@@ -184,16 +184,16 @@ describe('Chat CRUD tests', function() {
 	});
 
 
-	it('should be able to get a single article if not signed in', function(done) {
+	it('should be able to get a single chat if not signed in', function(done) {
 		// Create new article model instance
-		var articleObj = new Article(article);
+		var chatObj = new Chat(chat);
 
 		// Save the article
-		articleObj.save(function() {
-			request(app).get('/articles/' + articleObj._id)
+		chatObj.save(function() {
+			request(app).get('/chat/' + chatObj._id)
 				.end(function(req, res) {
 					// Set assertion
-					res.body.should.be.an.Object.with.property('title', article.title);
+					res.body.should.be.an.Object.with.property('title', chat.title);
 
 					// Call the assertion callback
 					done();
@@ -201,7 +201,7 @@ describe('Chat CRUD tests', function() {
 		});
 	});
 
-	it('should be able to delete an article if signed in', function(done) {
+	it('should be able to delete an chat if signed in', function(done) {
 		agent.post('/auth/signin')
 			.send(credentials)
 			.expect(200)
@@ -213,23 +213,23 @@ describe('Chat CRUD tests', function() {
 				var userId = user.id;
 
 				// Save a new article
-				agent.post('/articles')
-					.send(article)
+				agent.post('/chat')
+					.send(chat)
 					.expect(200)
-					.end(function(articleSaveErr, articleSaveRes) {
-						// Handle article save error
-						if (articleSaveErr) done(articleSaveErr);
+					.end(function(chatSaveErr, chatSaveRes) {
+						// Handle chat save error
+						if (chatSaveErr) done(chatSaveErr);
 
-						// Delete an existing article
-						agent.delete('/articles/' + articleSaveRes.body._id)
-							.send(article)
+						// Delete an existing chat
+						agent.delete('/chat/' + chatSaveRes.body._id)
+							.send(chat)
 							.expect(200)
-							.end(function(articleDeleteErr, articleDeleteRes) {
-								// Handle article error error
-								if (articleDeleteErr) done(articleDeleteErr);
+							.end(function(chatDeleteErr, chatDeleteRes) {
+								// Handle chat error error
+								if (chatDeleteErr) done(chatDeleteErr);
 
 								// Set assertions
-								(articleDeleteRes.body._id).should.equal(articleSaveRes.body._id);
+								(chatDeleteRes.body._id).should.equal(chatSaveRes.body._id);
 
 								// Call the assertion callback
 								done();
@@ -238,24 +238,24 @@ describe('Chat CRUD tests', function() {
 			});
 	});
 
-	it('should not be able to delete an article if not signed in', function(done) {
+	it('should not be able to delete an chat if not signed in', function(done) {
 		// Set article user 
-		article.user = user;
+		chat.user = user;
 
-		// Create new article model instance
-		var articleObj = new Article(article);
+		// Create new chat model instance
+		var chatObj = new Chat(chat);
 
-		// Save the article
-		articleObj.save(function() {
-			// Try deleting article
-			request(app).delete('/articles/' + articleObj._id)
+		// Save the chat
+		chatObj.save(function() {
+			// Try deleting chat
+			request(app).delete('/chat/' + articleObj._id)
 			.expect(401)
-			.end(function(articleDeleteErr, articleDeleteRes) {
+			.end(function(chatDeleteErr, chatDeleteRes) {
 				// Set message assertion
-				(articleDeleteRes.body.message).should.match('User is not logged in');
+				(chatDeleteRes.body.message).should.match('User is not logged in');
 
 				// Handle article error error
-				done(articleDeleteErr);
+				done(chatDeleteErr);
 			});
 
 		});
@@ -263,7 +263,7 @@ describe('Chat CRUD tests', function() {
 
 	afterEach(function(done) {
 		User.remove().exec();
-		Article.remove().exec();
+		Chat.remove().exec();
 		done();
 	});
 });
