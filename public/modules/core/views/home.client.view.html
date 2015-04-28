@@ -12,34 +12,9 @@
 		<h4>Chatter-Mouth is a a real-time chat application that allows users to do exactly one thing: chat! Set up your account and have access to simple chatting with other users. Enjoy. </h4>
 		<h2>Please Sign-In to Start Chatting! </h2>
 	</div>
+	
 	<div data-ng-show="authentication.user">
 		<h2>Welcome back, {{ authentication.user.displayName }}!</h2>
-	
-
-	
-	<div class="row chat tex-center">
-		<p></p>
-		<ul id="messages"></ul>
-
-	    <form action="">
-	    <input id="m" autocomplete="off" /><button>Chat</button>
-	    </form>
-
-	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-		<script>
-		  var socket = io();
-		  $('form').submit(function(){
-		    socket.emit('chat message', $('#m').val());
-		    $('#m').val('');
-		    return false;
-		  });
-		  socket.on('chat message', function(msg){
-		    $('#messages').append($('<li>').text(msg));
-		  });
-		</script>
-	</div>
-
 	</div>
 
 
