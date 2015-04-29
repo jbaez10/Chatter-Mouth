@@ -4,13 +4,16 @@ angular.module('chats').controller('ChatsController', ['$scope', '$stateParams',
 	//add socket to parameters
 	function($scope, $stateParams, $location, Authentication, Socket, Chats) {
 		$scope.authentication = Authentication;
+		$scope.chats = Chats.query();
+		
 		$scope.create = function() {
 			var chat = new Chats({
 				title: this.title,
 				content: this.content
 			});
 			chat.$save(function(response) {
-				$location.path('chats/' + response._id);
+				$location.path('chats');
+				$scope.chats = Chats.query();
 				$scope.title = '';
 				$scope.content = '';
 			}, function(errorResponse) {

@@ -10,7 +10,41 @@
 
 </style>
 
-<section data-ng-controller="ChatsController" data-ng-init="find()">
+
+<section data-ng-controller="ChatsController">
+	<div class="page-header">
+		<h1>Start Your Chat!</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="chatForm" class="form-horizontal" data-ng-submit="create(); alert('test')" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error': chatForm.title.$dirty && chatForm.title.$invalid }">
+					<label class="control-label" for="title">Chat Title</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" >
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="content">Start Chatting</label>
+					<div class="controls">
+						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="10" rows="5" placeholder="Content"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default" style="width:200px" value="POST">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+<!-- </section>
+
+<br>
+<br>
+
+  <section data-ng-controller="ChatsController" data-ng-init="find()"> -->
 	<div class="page-header">
 		<h1>Your Chat'</h1>
 	</div>
