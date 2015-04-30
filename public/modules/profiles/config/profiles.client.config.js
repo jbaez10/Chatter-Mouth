@@ -4,8 +4,8 @@
 angular.module('profiles').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Profiles', 'profiles', 'dropdown', '/profiles(/create)?', false);
-		Menus.addSubMenuItem('topbar', 'profiles', 'List Profiles', 'profiles', false);
-		Menus.addSubMenuItem('topbar', 'profiles', 'New Profile', 'profiles/create', false);
+		Menus.addMenuItem('topbar', 'Profile Pic', 'profiles', 'dropdown', '/profiles(/create)?', false);
+		Menus.addSubMenuItem('topbar', 'profiles', 'Current Profile Pic', 'profiles', false);
+		Menus.addSubMenuItem('topbar', 'profiles', 'Upload New Profile Pic', 'profiles/create', false);
 	}
 ]);
