@@ -17,8 +17,8 @@ var ChatSchema = new Schema({
 	title: {
 		type: String,
 		default: '',
-		trim: true,
-		required: 'Chat Title cannot be blank'
+		trim: true
+		//required: 'Chat Title cannot be blank'
 	},
 	content: {
 		type: String,

@@ -56,7 +56,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete an chat
+ * Delete a chat
  */
 exports.delete = function(req, res) {
 	var chat = req.chat;
