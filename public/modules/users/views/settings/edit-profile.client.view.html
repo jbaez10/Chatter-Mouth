@@ -1,10 +1,9 @@
-<section class="row" data-ng-controller="SettingsController">
 
 	<div class="col-md-6 text-center">
 	<section data-ng-controller="ProfilesController" data-ng-init="find()">
 	    <div class="page-header">
 	        <h1>Profile Picture</h1>
-	        <h4>Would you like to <a href="/#!/profiles/create">upload</a> a new profile pic?</h4>
+	        <h4>Would you like to <a href="/#!/settings/profile/upload">upload</a> a new profile picture?</h4>
 	    </div>
         
       
@@ -14,9 +13,10 @@
 	        </a>
 	    </div>
         
-	    <div class="alert alert-warning text-center" data-ng-hide="!profiles.$resolved || profiles.length">
+	    <!--<div class="alert alert-warning text-center" data-ng-hide="!profiles.$resolved || profiles.length">
 	    	No Profiles yet, why don't you <a href="/#!/profiles/create">create one</a>?
 	    </div>
+	    -->
 	</section>
 
 	</div>
@@ -27,8 +27,9 @@
 
 
 
+<section class="row" data-ng-controller="SettingsController">
 
-	<h3 class="col-md-6">Edit your profile</h3>
+	<h3 class="col-md-6" style="text-align:center;">Edit your profile</h3>
 	<div class="col-md-6">
 		<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
 			<fieldset>
@@ -61,3 +62,4 @@
 		</form>
 	</div>
 </section>
+

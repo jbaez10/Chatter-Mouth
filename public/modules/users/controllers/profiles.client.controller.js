@@ -1,9 +1,8 @@
 'use strict';
 
 //note addition of $http
-angular.module('profiles')
-.controller('ProfilesController', ['$scope', '$stateParams', '$location', '$http', 'Authentication', 'Profiles',  
-	function($scope, $stateParams, $location, $http, Authentication, Profiles) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 
+	function($scope, $stateParams, $location, $http, Authentication) {
 	  $scope.authentication = Authentication;
 
 	  $scope.likes = 0;
@@ -17,7 +16,7 @@ angular.module('profiles')
               file: $scope.imageFile
 	    });
 	    profile.$save(function(response) {
-	      $location.path('settings/profile');
+	      $location.path('/settings/profile/edit');
 	      // Clear form fields
 	      $scope.imageName = '';
               $scope.imageFile = '';
@@ -43,7 +42,7 @@ angular.module('profiles')
 	      }
 	    } else {
 	      $scope.profile.$remove(function() {
-		$location.path('profiles');
+		$location.path('/settings/profile');
 	      });
 	    }
 	  };
