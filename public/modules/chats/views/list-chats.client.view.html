@@ -12,7 +12,7 @@
 
 <section data-ng-controller="ChatsController">
 	<div class="page-header">
-		<<h1>{{ authentication.user.username }}: Start Your Chat!</h1>
+		<h1>{{ authentication.user.username }}: Start Your Chat!</h1>
 	</div>
 
 	<div class="col-md-12">
@@ -65,7 +65,5 @@
 			
 		</a>
 	</div>
-	<div class="alert alert-warning text-center" data-ng-if="chats.$resolved && !chats.length">
-		No chats yet, why don't you <a href="/#!/chats/create">create one</a>?
-	</div>
+	
 </section>

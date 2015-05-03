@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/meanscoket-dev',
+	db: 'mongodb://localhost/chatter',
 	app: {
 		title: 'Chatter Box 2.0'
 	},

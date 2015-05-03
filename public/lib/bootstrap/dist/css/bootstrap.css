@@ -1411,6 +1411,12 @@ a.bg-danger:hover {
 .page-header > h1 {
   color: #795168;
 }
+.page-header-status {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-top: 2px solid #795168;
+  text-align: center;
+}
 .page-content {
   padding-bottom: 9px;
   margin: 40px 0 20px;
