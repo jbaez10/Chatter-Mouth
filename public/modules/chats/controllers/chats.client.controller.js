@@ -12,7 +12,7 @@ angular.module('chats').controller('ChatsController', ['$scope', '$stateParams',
 				content: this.content
 			});
 			chat.$save(function(response) {
-				$location.path('chatrooms/' + chatroom._id);
+				$location.path('chats');
 				$scope.chats = Chats.query();
 				$scope.title = '';
 				$scope.content = '';
