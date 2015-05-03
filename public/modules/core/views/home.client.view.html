@@ -1,3 +1,10 @@
+<style>
+	.floatr{
+		float:right;
+
+	}
+</style>
+
 <section data-ng-controller="HomeController">
 	<div class="text-center">
 		<div class="row">
@@ -8,13 +15,62 @@
 	</div>
 
 	<br><br>
+	
 	<div class="row welcome text-center" data-ng-hide="authentication.user">
 		<h4>Chatter-Mouth is a a real-time chat application that allows users to do exactly one thing: chat! Set up your account and have access to simple chatting with other users. Enjoy. </h4>
 		<h2>Please Sign-In to Start Chatting! </h2>
 	</div>
 	
+	
+
 	<div data-ng-show="authentication.user">
-		<h2>Welcome back, {{ authentication.user.displayName }}!</h2>
+		
+		<div class="welcome-header">
+        	<h3>Welcome to Chatter Box, {{ authentication.user.displayName }}</h3>
+    	</div>
+
+
+  	<div class="page-header">
+        <h1>Timeline</h1>
+    </div>
+
+<section data-ng-controller="ArticlesController" data-ng-init="find()">
+	<div class="list-group3">
+
+		<a data-ng-repeat="article in articles" class="list-group-item">
+
+			<small class="list-group-item-text">
+				Status posted on
+				<span data-ng-bind="article.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="article.user.displayName"></span>
+			</small>
+			
+			<br>
+			
+			<h2 class="list-group-item-heading" data-ng-bind="article.content"></h2>
+		</a>
+	</div>
+</section>
+
+
+<section data-ng-controller="PhotosController" data-ng-init="find()">
+    <div class="list-group2">
+        <a data-ng-repeat="photo in photos" data-ng-href="#!/photos/{{photo._id}}" class="list-group-item" ng-swipe-right="hide(index)">
+			
+			<small class="list-group-item-text">
+				Photo posted on
+				<span data-ng-bind="photo.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="photo.user.displayName"></span>
+			</small>
+
+			<h4 class="list-group-item-heading"></h4>
+			<image src="{{photo.image}}" style="max-width:100%" />
+        </a>
+    </div>
+</section>
+
 	</div>
 
 

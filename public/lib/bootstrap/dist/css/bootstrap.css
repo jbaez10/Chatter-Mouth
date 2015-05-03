@@ -1405,8 +1405,23 @@ a.bg-danger:hover {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
+  border-bottom: 2px solid #795168;
+  text-align: center;
+}
+.page-header > h1 {
+  color: #795168;
+}
+.page-content {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
   border-bottom: 1px solid #eee;
 }
+.welcome-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  text-align: left;
+}
+
 ul,
 ol {
   margin-top: 0;

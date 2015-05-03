@@ -25,12 +25,4 @@
       }      
 
 
-      .chat{ height:500px; font-family: courier; font-size:16px;}
-      /* * { margin: 0; padding: 0; box-sizing: border-box; } */
-      .chat > form { background: #795168; padding: 3px; position: fixed; bottom: 0; width: 82%; }
-      .chat > form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      .chat > form button { width: 9%; background-color: #f5c10e; border: none; padding: 10px; font-family:Courier; font-size:18px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
   
