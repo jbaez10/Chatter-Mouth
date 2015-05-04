@@ -9,6 +9,14 @@ angular.module('photos').config(['$stateProvider',
 			url: '/photos',
 			templateUrl: 'modules/photos/views/list-photos.client.view.html'
 		}).
+		state('myTimeline', {
+			url: '/settings/mytimeline',
+			templateUrl:  'modules/users/views/settings/your-timeline.client.view.html'
+		}).
+		state('myPhotos', {
+			url: '/photos/myphotos',
+			templateUrl: 'modules/photos/views/list-myphotos.client.view.html'
+		}).
 		state('createPhoto', {
 			url: '/photos/create',
 			templateUrl: 'modules/photos/views/create-photo.client.view.html'

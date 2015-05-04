@@ -8,7 +8,7 @@
     </div>
     
     <div class="profile">
-	        <a data-ng-end="profile in profiles" ng-swipe-right="hide(index)">	
+	        <a data-ng-end="profile in profiles" ng-if="profile.user.displayName===authentication.user.displayName" ng-swipe-right="hide(index)">	
 				<image src="{{profiles[0].image}}" style="max-width:100%" />			
 	        </a>
 	  </div>

@@ -3,7 +3,7 @@
         <h1>Photos</h1>
     </div>
     <div class="list-group" style="text-align:center;">
-        <a data-ng-repeat="photo in photos" data-ng-href="#!/photos/{{photo._id}}" class="list-group-item" ng-swipe-right="hide(index)">
+        <a data-ng-repeat="photo in photos" ng-if="photo.user.displayName===authentication.user.displayName" data-ng-href="#!/photos/{{photo._id}}" class="list-group-item" ng-swipe-right="hide(index)">
 			
 			<h2 class="list-group-item-heading" data-ng-bind="photo.name"></h2>
 			
